@@ -4,7 +4,6 @@
     margin: 20px; /* Added margin for space around the form */
     padding: 20px;
     border-radius: 5px;
-    background-color: #f9f9f9;
 }
 
 /* Style for input fields */
@@ -14,8 +13,9 @@
     margin: 5px 0;
     border-radius: 5px;
     box-sizing: border-box;
-    font-size: 16px;
-    border: 1px solid #ccc; /* Added a thin border around input fields */
+    font-size: 20px;
+    border: 0.1px solid #ccc; /* Added a thin border around input fields */
+    opacity: 0.5;
 }
 
 .textarea-field {
@@ -25,6 +25,7 @@
     box-sizing: border-box;
     font-size: 16px;
     border: 1px solid #ccc; /* Added a thin border around input fields */
+    opacity: 0.5;
 }
 
 /* Style for submit button */
@@ -47,8 +48,9 @@
 }
 
 textarea {
-    width: 90%; /* Width is 90% of its parent */
+    width: 95%; /* Width is 90% of its parent */
     height: 50%; /* Height is 90% of its parent */
     resize: vertical; /* Allows vertical resizing */
     box-sizing: border-box; /* Include padding and border in the width and height */
+    opacity: 0.5;
   }
