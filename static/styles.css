@@ -90,4 +90,9 @@
     background-color: #0056b3;
 }
 
+/* Indent replies */
+.reply {
+    padding-right: 20px; /* Adjust the padding to the right */
+    border-right: 2px solid #ccc; /* Add a right border for separation */
+}
 
