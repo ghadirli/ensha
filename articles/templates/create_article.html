@@ -1,0 +1,15 @@
+<!-- create_article.html -->
+<html lang="fa-ir" dir="rtl">
+    <body>
+        <h2>انتشار مقاله</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="title">تیتر:</label><br>
+            <input type="text" id="title" name="title"><br>
+
+            <label for="content">محتوا:</label><br>
+            <textarea id="content" name="content"></textarea><br>
+            <input type="submit" value="ارسال">
+        </form>
+    </body>
+</html>

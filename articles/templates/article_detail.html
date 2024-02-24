@@ -1,0 +1,25 @@
+<!-- article_detail.html -->
+    <!-- article_detail.html -->
+<!DOCTYPE html>
+<!-- article_detail.html -->
+<html lang="fa-ir" dir="rtl">
+<!-- article_detail.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+    <div class="container">`
+        <article class="article">
+            <h1>{{ article.title }}</h1>
+            <p class="author">By {{ article.author.username }}</p>
+            <p class="date">Published on {{ article.created_at|date:"F d, Y" }}</p>
+            <div class="content">
+                {{ article.content }}
+            </div>
+        </article>
+    </div>
+</body>
+</html>

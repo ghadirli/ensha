@@ -1,0 +1,64 @@
+<!-- article_list.html -->
+<!-- article_list.html -->
+<!DOCTYPE html>
+<html lang="fa-ir" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فهرست انشاها</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .article {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .article h2 {
+            margin-top: 0;
+        }
+
+        .article p {
+            margin-bottom: 0;
+        }
+
+        .article a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .article a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>فهرست کیری</h1>
+        {% for article in articles %}
+        <div class="article">
+            <h2><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h2>
+            <p>{{ article.content|truncatechars:200 }}</p>
+            <p>Author: {{ article.author.username }}</p>
+        </div>
+        {% empty %}
+        <p>No articles found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
