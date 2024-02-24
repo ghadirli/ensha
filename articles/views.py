@@ -11,7 +11,7 @@ def article_list(request):
 
 
 def show_base(request):
-    return render(request, 'baseensha.html', {})
+    return render(request, 'base.html', {})
 
 @login_required
 def create_article(request):

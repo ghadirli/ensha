@@ -33,7 +33,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-LOGIN_REDIRECT_URL = 'article_list'
+LOGIN_REDIRECT_URL = 'acc_article_list'
 LOGOUT_REDIRECT_URL = "home"
 
 INSTALLED_APPS = [
