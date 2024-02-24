@@ -14,13 +14,14 @@
         <link rel="stylesheet" href="{% static 'create_post.css' %}">
     </head>
     <body>
-        <h2>انتشار مقاله</h2>
+<!--        <h2>انتشار مقاله</h2>-->
         <form method="post" class="styled-form">
-            <label for="title">تیتر:</label><br>
-            <input type="text" id="title" name="title" class="input-field"><br>
+            {% csrf_token %}
+<!--            <label for="title">تیتر:</label><br>-->
+            <input type="text" id="title" placeholder="سرمقاله" name="title" class="input-field"><br>
         
-            <label for="content">محتوا:</label><br>
-            <textarea id="content" name="content" rows="5" class="textarea-field"></textarea><br>
+<!--            <label for="content">محتوا:</label><br>-->
+            <textarea id="content" name="content" placeholder="متن" rows="5" class="textarea-field"></textarea><br>
         
             <input type="submit" value="ارسال" class="submit-button">
         </form>

@@ -36,3 +36,12 @@ body {
         .article a:hover {
             text-decoration: underline;
         }
+        .input-field {
+            width: 33%; /* Adjusted width to allow for padding and border */
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            border: 1px solid #ccc; /* Added a thin border around input fields */
+        }
