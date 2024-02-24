@@ -10,6 +10,9 @@ def article_list(request):
     return render(request, 'article_list.html', {'articles': articles})
 
 
+def show_base(request):
+    return render(request, 'baseensha.html', {})
+
 @login_required
 def create_article(request):
     if request.method == 'POST':
