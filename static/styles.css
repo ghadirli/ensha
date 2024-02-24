@@ -1,36 +1,27 @@
-/* styles.css */
-boxxdy {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
+/* Add these styles to styles.css */
 .article {
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 20px;
 }
 
 .article h1 {
+    font-size: 28px;
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .author {
     font-style: italic;
-    color: #555;
+    color: #777;
 }
 
 .date {
     font-size: 0.9em;
-    color: #777;
+    color: #aaa;
+    margin-top: 8px;
 }
 
 .content {
@@ -38,8 +29,65 @@ boxxdy {
     line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 0 10px;
-    }
+/* Add these styles to styles.css */
+.comments {
+    margin-top: 20px;
 }
+
+.comment {
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment p {
+    margin: 0;
+}
+
+.comment .author {
+    font-style: italic;
+    color: #777;
+    font-size: 0.8em;
+}
+
+/* Add these styles to styles.css */
+.comments {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.comment p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.comment .meta {
+    font-size: 14px;
+    color: #777;
+    margin-top: 8px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+

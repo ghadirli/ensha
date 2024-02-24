@@ -12,18 +12,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ article.title }}</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
 </head>
 <body>
-    <div class="container">`
+    <div class="container">
         <article class="article">
             <h1>{{ article.title }}</h1>
             <p class="author">By {{ article.author.username }}</p>
             <p class="date">Published on {{ article.created_at|date:"F d, Y" }}</p>
             <div class="content">
-                {{ article.content }}
+                {{ article.content | safe }}
             </div>
         </article>
+
+    </div>
+
+    <div class="comments">
+
+        <!-- Display existing comments -->
+        {% for comment in comments %}
+        <div class="comment">
+            <p>{{ comment.content }}</p>
+            <p class="author">By {{ comment.author.username }} | {{ comment.created_at|date:"F d, Y" }}</p>
+        </div>
+        {% empty %}
+        <p>No comments yet.</p>
+        {% endfor %}
     </div>
 </body>
 </html>
