@@ -1,11 +1,13 @@
 <!-- base.html -->
-<!DOCTYPE html>
+{% load static %}
+
 <html lang="fa-ir" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Your Website{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="css/baseensha.css"/>
+    <link rel="stylesheet" href="{% static 'baseensha.css' %}">
+
 </head>
 <body>
     <nav>
