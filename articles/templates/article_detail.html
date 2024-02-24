@@ -25,21 +25,33 @@
                 {{ article.content | safe }}
             </div>
         </article>
-
     </div>
+
 
     <div class="comments">
 
-        <!-- Display existing comments -->
-        {% for comment in comments %}
+    <!-- Display comments and replies -->
+    {% for comment in comments %}
+        {% if comment.parent is  null%}
         <div class="comment">
             <p>{{ comment.content }}</p>
-            <p class="author">By {{ comment.author.username }} | {{ comment.created_at|date:"F d, Y" }}</p>
+            <p class="meta">By {{ comment.author.username }} | {{ comment.created_at|date:"F d, Y" }}</p>
+            <!-- Display replies -->
+            {% for reply in comment.replies.all %}
+            <div class="reply">
+
+                {% include 'replies.html' with replies=comment.replies.all %}
+            </div>
+            {% empty %}
+            <!-- No replies -->
+            {% endfor %}
         </div>
+                {% endif %}
+
         {% empty %}
         <p>No comments yet.</p>
-        {% endfor %}
-    </div>
+    {% endfor %}
+</div>
 </body>
 </html>
 {% endblock %}

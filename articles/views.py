@@ -1,6 +1,6 @@
 # In articles/views.py
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Article
 
@@ -30,8 +30,8 @@ def create_article(request):
 
 
 def article_detail(request, article_id):
-    article = Article.objects.get(pk=article_id)
-    comments = article.comment_set.all()
+    article = get_object_or_404(Article, pk=article_id)
+    comments = article.comments.all()
     return render(request, 'article_detail.html', {
         'article': article,
         'comments': comments,
