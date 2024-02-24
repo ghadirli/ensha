@@ -31,4 +31,9 @@ def create_article(request):
 
 def article_detail(request, article_id):
     article = Article.objects.get(pk=article_id)
-    return render(request, 'article_detail.html', {'article': article})
+    comments = article.comment_set.all()
+    return render(request, 'article_detail.html', {
+        'article': article,
+        'comments': comments,
+    })
+
