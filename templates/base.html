@@ -12,10 +12,13 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/">خانه</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="/accounts/create">ایجاد مقاله</a></li>
+            {% endif %}
+            <li><a href="/accounts/">خانه</a></li>
             <li><a href="/articles/">مقاله‌ها</a></li>
             <li><a href="/about/">درباره</a></li>
-            <li><a href="/"> پروفایل </a></li>
+            <li><a href="/accounts/login">ورود</a></li>
             <!-- Add more menu items as needed -->
         </ul>
     </nav>
