@@ -1,0 +1,35 @@
+<!-- article_list.html -->
+<!-- article_list.html -->
+{% extends "baseensha.html" %}
+
+{% block content %}
+
+{% load static %}
+
+
+<html lang="fa-ir" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فهرست انشاها</title>
+    <link rel="stylesheet" href="{% static 'article_list.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>فهرست کیری</h1>
+        {% for article in articles %}
+        <div class="article">
+            <h2><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h2>
+            <p>{{ article.content|truncatechars:200 }}</p>
+            <p>Author: {{ article.author.username }}</p>
+        </div>
+        {% empty %}
+        <p>No articles found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+{% endblock %}
+
