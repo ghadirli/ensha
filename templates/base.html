@@ -1,13 +1,13 @@
 <!-- base.html -->
 {% load static %}
-
+{% csrf_token %}
 <html lang="fa-ir" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Your Website{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
-
+    <script src="{% static 'script.js' %}"></script>
 </head>
 <body>
     <nav>
@@ -18,7 +18,11 @@
             <li><a href="/accounts/">خانه</a></li>
             <li><a href="/articles/">مقاله‌ها</a></li>
             <li><a href="/about/">درباره</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="/accounts/login" id="logout-link">خروج</a></li>
+            {% else %}
             <li><a href="/accounts/login">ورود</a></li>
+            {% endif %}
             <!-- Add more menu items as needed -->
         </ul>
     </nav>
