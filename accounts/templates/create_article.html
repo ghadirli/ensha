@@ -5,17 +5,25 @@
 
 {% load static %}
 
+
 <html lang="fa-ir" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Create post{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'create_post.css' %}">
+    </head>
     <body>
         <h2>انتشار مقاله</h2>
-        <form method="post">
+        <form method="post" class="styled-form">
             {% csrf_token %}
             <label for="title">تیتر:</label><br>
-            <input type="text" id="title" name="title"><br>
-
+            <input type="text" id="title" name="title" class="input-field"><br>
+        
             <label for="content">محتوا:</label><br>
-            <textarea id="content" name="content"></textarea><br>
-            <input type="submit" value="ارسال">
+            <textarea id="content" name="content" rows="5" class="textarea-field"></textarea><br>
+        
+            <input type="submit" value="ارسال" class="submit-button">
         </form>
     </body>
 </html>

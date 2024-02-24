@@ -14,9 +14,11 @@ body {
 }
 
 nav {
-    background-color: #007bff;
+    background-color: #511bf5;
     padding: 10px 0;
 }
+
+
 
 nav ul {
     list-style-type: none;

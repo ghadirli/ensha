@@ -1,0 +1,54 @@
+/* Basic form styling */
+.styled-form {
+    max-width: 90%;
+    margin: 20px; /* Added margin for space around the form */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for input fields */
+.input-field {
+    width: 33%; /* Adjusted width to allow for padding and border */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Added a thin border around input fields */
+}
+
+.textarea-field {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Added a thin border around input fields */
+}
+
+/* Style for submit button */
+.submit-button {
+    width: auto; /* Button width adjusted to content */
+    padding: 8px 20px; /* Adjusted padding for a smaller button */
+    margin-top: 5px; /* Reduced margin top for tighter spacing */
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    float: right; /* Floated the button to the right */
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+textarea {
+    width: 90%; /* Width is 90% of its parent */
+    height: 50%; /* Height is 90% of its parent */
+    resize: vertical; /* Allows vertical resizing */
+    box-sizing: border-box; /* Include padding and border in the width and height */
+  }
