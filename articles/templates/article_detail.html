@@ -3,6 +3,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load markdown_extras %}
 
 {% load static %}
 <!-- article_detail.html -->
@@ -22,7 +23,7 @@
             <p class="author">By {{ article.author.username }}</p>
             <p class="date">Published on {{ article.created_at|date:"F d, Y" }}</p>
             <div class="content">
-                {{ article.content | safe }}
+                {{ article.content | markdown | safe }}
             </div>
         </article>
     </div>

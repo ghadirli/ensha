@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% load markdown_extras %}
+
 {% load static %}
 
 
@@ -21,7 +23,7 @@
         {% for article in articles %}
         <div class="article">
             <h2><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h2>
-            <p>{{ article.content|truncatechars:200 }}</p>
+            {{ article.content | truncatewords:200 | markdown | safe}}
             <p>Author: {{ article.author.username }}</p>
         </div>
         {% empty %}

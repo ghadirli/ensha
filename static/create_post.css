@@ -28,14 +28,14 @@
     opacity: 0.5;
 }
 
-/* Style for submit button */
+    /* Style for submit button */
 .submit-button {
     width: auto; /* Button width adjusted to content */
     padding: 8px 20px; /* Adjusted padding for a smaller button */
     margin-top: 5px; /* Reduced margin top for tighter spacing */
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #45a049;
     color: white;
     font-size: 16px;
     cursor: pointer;
