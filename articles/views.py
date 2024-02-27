@@ -15,6 +15,19 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 
 
+def delete_article(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+    if request.user == article.author:
+        if request.method == 'POST':
+            article.delete()
+            return redirect('home')  # Redirect to the home page after deletion
+        else:
+            # Render delete confirmation template (optional)
+            return render(request, 'delete_article_confirmation.html', {'article': article})
+    else:
+        return redirect('article_detail', article_id=article_id)
+
+
 def edit_article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     if request.user == article.author:
@@ -32,7 +45,6 @@ def edit_article(request, article_id):
             return render(request, 'edit_article.html', {'article': article})
     else:
         return redirect('article_detail', article_id=article_id)
-
 
 
 def show_base(request):
