@@ -3,34 +3,27 @@
 
 {% block content %}
 
-{% load markdown_extras %}
-
 {% load static %}
 
 
 
 <html lang="fa-ir" dir="rtl">
-<head>
-    <link href='https://fonts.googleapis.com/css?family=Vazirmatn' rel='stylesheet'>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فهرست انشاها</title>
-    <link rel="stylesheet" href="{% static 'article_list.css' %}">
-
-</head>
-<body>
-    <div class="container">
-        <h2>ویرایش مقاله</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-        </form>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Create post{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'create_post.css' %}">
+    </head>
+    <body>
+<!--        <h2>انتشار مقاله</h2>-->
+            <form method="post" class="styled-form">
+                {% csrf_token %}
+                    <input type="text" id="title" name="title" value="{{ article.title }}" class="input-field">
+                    <textarea id="content" name="content" class="textarea-field">{{ article.content }}</textarea>
+                <input type="submit" value="اتمام ویرایش" class="submit-button">
+            </form>
+    </body>
 </html>
-
 
 
 

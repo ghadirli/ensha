@@ -10,19 +10,30 @@ def article_list(request):
     return render(request, 'article_list.html', {'articles': articles})
 
 
+# views.py
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Article
+
+
 def edit_article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     if request.user == article.author:
         if request.method == 'POST':
-            form = ArticleForm(request.POST, instance=article)
-            if form.is_valid():
-                form.save()
-                return redirect('article_detail', article_id=article_id)
+            # Handle form submission
+            title = request.POST.get('title')
+            content = request.POST.get('content')
+            # Update article object
+            article.title = title
+            article.content = content
+            article.save()
+            return redirect('article_detail', article_id=article_id)
         else:
-            form = ArticleForm(instance=article)
-        return render(request, 'edit_article.html', {'form': form})
+            # Render edit article template
+            return render(request, 'edit_article.html', {'article': article})
     else:
         return redirect('article_detail', article_id=article_id)
+
+
 
 def show_base(request):
     return render(request, 'base.html', {})
@@ -35,4 +46,3 @@ def article_detail(request, article_id):
         'article': article,
         'comments': comments,
     })
-
