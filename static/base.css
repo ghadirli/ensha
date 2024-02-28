@@ -19,6 +19,9 @@ nav {
 }
 
 
+nav ul li.logout-link {
+    margin-right: 0; /* Set margin-right to 0 to align to the far left */
+}
 
 nav ul {
     list-style-type: none;

@@ -29,8 +29,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path('about/', TemplateView.as_view(template_name="about.html"), name="about"),
-    # path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
-    path('venue/', include('articles.urls'), name='create_venue'),
+    path('venue/', include('venues.urls'), name='create_venue'),
 
     # path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('ckeditor/', include('ckeditor_uploader.urls')),

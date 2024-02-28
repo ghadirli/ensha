@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
-from articles.models import Venue
+from venues.models import Venue
 
 
 class SignUpView(CreateView):
@@ -51,4 +51,5 @@ def create_article(request):
         # Remember to associate the article with the logged-in user
         # Redirect to article detail view or article list view
     else:
-        return render(request, 'create_article.html')
+        venues = Venue.objects.all()
+        return render(request, 'create_article.html', {'venues': venues})

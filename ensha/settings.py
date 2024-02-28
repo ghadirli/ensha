@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'jalali_date',
     'ckeditor_uploader',
     'articles',
+    'venues',
     'accounts',
     'ckeditor',
     'django.contrib.auth',

@@ -5,7 +5,7 @@ from .models import Article
 from .forms import ArticleForm
 from jalali_date import datetime2jalali, date2jalali
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Article, Venue
+from .models import Article
 
 
 def article_list(request):
@@ -60,23 +60,3 @@ def article_detail(request, article_id):
         'comments': comments,
     })
 
-
-@login_required
-def create_venue(request):
-    if request.method == 'POST':
-        # Get the form data from the request
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        # Create a new venue object
-        venue = Venue.objects.create(name=name, description=description)
-        # Redirect to the venue list page or any other appropriate page
-        return redirect('venue_list')
-        # Redirect to the venue list page or any other page you want
-    else:
-        return render(request, 'create_venue.html')
-
-
-def venue_list(request):
-    print("kir tot")
-    venues = Venue.objects.all()
-    return render(request, 'venue_list.html', {'venues': venues})

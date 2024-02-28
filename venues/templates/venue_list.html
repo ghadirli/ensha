@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load markdown_extras %}
+
+{% load static %}
+
+<html lang="fa-ir" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue List</title>
+    <style>
+        .venues {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .venue {
+            width: 30%; /* Adjust the width as needed */
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .venue h2 {
+            margin-top: 0;
+        }
+        .venue h2 a {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit color from parent */
+        }
+        .venue p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>لیست مجله‌ها</h1>
+
+    <div class="venues">
+        {% for venue in venues %}
+            <div class="venue">
+                <h2><a href="{% url 'venue_detail' venue.id %}">{{ venue.name }}</a></h2>
+                <p>{{ venue.description }}</p>
+            </div>
+        {% empty %}
+            <p>No venues found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+{% endblock %}
