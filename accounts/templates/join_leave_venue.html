@@ -1,0 +1,29 @@
+
+
+
+<!-- create_article.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+<h2>{{ venue.name }}</h2>
+<p>{{ venue.description }}</p>
+
+{% if user in venue.members.all %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Leave Venue">
+    </form>
+{% else %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Join Venue">
+    </form>
+{% endif %}
+
+
+{% endblock %}

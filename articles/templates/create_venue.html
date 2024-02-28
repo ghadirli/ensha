@@ -1,0 +1,37 @@
+<!-- create_venue.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+<html lang="fa-ir" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Create post{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'create_post.css' %}">
+    </head>
+    <body>
+<!--        <h2>انتشار مقاله</h2>-->
+            <form method="post" class="styled-form">
+                {% csrf_token %}
+                <input type="text" id="name"  placeholder="موضوع مجله" name="name" class="input-field"><br>
+
+                <textarea id="id_description" name="description" placeholder="شرح" rows="5" class="textarea-field"></textarea><br>
+
+                <input type="submit" value="ساختن" class="submit-button">
+            </form>
+
+    </body>
+</html>
+
+
+
+
+
+{% endblock %}

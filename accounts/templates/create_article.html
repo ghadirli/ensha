@@ -21,6 +21,12 @@
 
             <textarea id="content" name="content" placeholder="متن" rows="5" class="textarea-field"></textarea><br>
 
+            <label for="venues">مجله</label><br>
+            <select id="venues" name="venues" multiple>
+                {% for venue in venues %}
+                    <option value="{{ venue.id }}">{{ venue.name }}</option>
+                {% endfor %}
+            </select><br>
             <input type="submit" value="ارسال" class="submit-button">
         </form>
     </body>

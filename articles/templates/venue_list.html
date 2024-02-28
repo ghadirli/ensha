@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load markdown_extras %}
+
+{% load static %}
+
+<html lang="fa-ir" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue List</title>
+</head>
+<body>
+    <h1>لیست مجله‌ها</h1>
+    <ul>
+        {% for venue in venues %}
+            <li>{{ venue.name }} - {{ venue.description }}</li>
+        {% empty %}
+            <li>No venues found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+{% endblock %}
