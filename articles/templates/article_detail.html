@@ -4,6 +4,7 @@
 
 {% block content %}
 {% load markdown_extras %}
+{% load jalali_tags %}
 
 {% load static %}
 <!-- article_detail.html -->
@@ -21,7 +22,9 @@
         <article class="article">
             <h1>{{ article.title }}</h1>
             <p class="author">By {{ article.author.username }}</p>
-            <p class="date">Published on {{ article.created_at|date:"F d, Y" }}</p>
+            <p class="date">
+                انتشار:
+                {{ article.created_at|to_jalali:'14%y/%m/%d در %H:%M' }}</p>
             <div class="content">
                 {{ article.content | markdown | safe }}
             </div>
