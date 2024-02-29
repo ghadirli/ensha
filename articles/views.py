@@ -6,6 +6,7 @@ from .forms import ArticleForm
 from jalali_date import datetime2jalali, date2jalali
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
+from django.http import JsonResponse
 
 
 def article_list(request):
@@ -14,6 +15,17 @@ def article_list(request):
 
 
 # views.py
+
+def update_likes(request):
+    if request.method == 'POST':
+        article_id = request.POST.get('article_id')
+        article = get_object_or_404(Article, pk=article_id)
+        article.likes += 1
+        article.save()
+        print("something cool")
+        return JsonResponse({'likes': article.likes})
+    else:
+        return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
 def delete_article(request, article_id):
@@ -59,4 +71,3 @@ def article_detail(request, article_id):
         'article': article,
         'comments': comments,
     })
-

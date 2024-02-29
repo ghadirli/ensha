@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'articles',
     'venues',
+    'jquery',
     'accounts',
     'ckeditor',
     'django.contrib.auth',

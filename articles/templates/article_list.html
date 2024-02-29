@@ -21,12 +21,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>فهرست کیری</h1>
+        <h1>فهرست مقاله‌ها</h1>
         {% for article in articles %}
         <div class="article">
             <h2><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h2>
             {{ article.content | truncatewords:20 | markdown | safe}}
-            <p>Author: {{ article.author.username }}</p>
+            <p>{{ article.author.username }}</p>
         </div>
         {% empty %}
         <p>No articles found.</p>

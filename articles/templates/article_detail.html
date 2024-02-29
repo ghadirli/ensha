@@ -1,74 +1,87 @@
 <!-- article_detail.html -->
-    <!-- article_detail.html -->
 {% extends "base.html" %}
-
 {% block content %}
 {% load markdown_extras %}
 {% load jalali_tags %}
-
 {% load static %}
-<!-- article_detail.html -->
+
 <html lang="fa-ir" dir="rtl">
-<!-- article_detail.html -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ article.title }}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-
 </head>
 <body>
     <div class="container">
         <article class="article">
             <h1>{{ article.title }}</h1>
+
+            <button id="like-btn">پسند</button>
+            <span id="likes-count">{{ article.likes }}</span>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#like-btn').click(function() {
+                        $.ajax({
+                            url: '{% url "update_likes" %}',
+                            method: 'POST',
+                            headers: {
+                                'X-CSRFToken': '{{ csrf_token }}'
+                            },
+                            data: {
+                                article_id: {{ article.id }}
+                            },
+                            success: function(data) {
+                                $('#likes-count').text(data.likes);
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(xhr.responseText);
+                            }
+                        });
+                    });
+                });
+            </script>
             <p class="author">By {{ article.author.username }}</p>
             <p class="date">
                 انتشار:
                 {{ article.created_at|to_jalali:'14%y/%m/%d در %H:%M' }}</p>
+            <hr>
             <div class="content">
                 {{ article.content | markdown | safe }}
             </div>
         </article>
     </div>
-
     {% if user.is_authenticated and article.author == user %}
         <a href="{% url 'edit_article' article.id %}" class="btn btn-primary">ویرایش</a>
     {% endif %}
-
-    <!-- Display delete button -->
-
     {% if user.is_authenticated and article.author == user %}
         <form action="{% url 'delete_article' article.id %}" method="post" style="display: inline;">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">حذف</button>
         </form>
     {% endif %}
-
     <div class="comments">
-
-    <!-- Display comments and replies -->
-    {% for comment in comments %}
-        {% if comment.parent is  null%}
-        <div class="comment">
-            <p>{{ comment.content }}</p>
-            <p class="meta">By {{ comment.author.username }} | {{ comment.created_at|date:"F d, Y" }}</p>
-            <!-- Display replies -->
-            {% for reply in comment.replies.all %}
-            <div class="reply">
-
-                {% include 'replies.html' with replies=comment.replies.all %}
-            </div>
+        <!-- Display comments and replies -->
+        {% for comment in comments %}
+            {% if comment.parent is  null%}
+                <div class="comment">
+                    <p>{{ comment.content }}</p>
+                    <p class="meta">By {{ comment.author.username }} | {{ comment.created_at|date:"F d, Y" }}</p>
+                    <!-- Display replies -->
+                    {% for reply in comment.replies.all %}
+                        <div class="reply">
+                            {% include 'replies.html' with replies=comment.replies.all %}
+                        </div>
+                    {% empty %}
+                        <!-- No replies -->
+                    {% endfor %}
+                </div>
+            {% endif %}
             {% empty %}
-            <!-- No replies -->
-            {% endfor %}
-        </div>
-                {% endif %}
-
-        {% empty %}
-        <p>No comments yet.</p>
-    {% endfor %}
-</div>
+                <p>No comments yet.</p>
+        {% endfor %}
+    </div>
 </body>
 </html>
 {% endblock %}
-

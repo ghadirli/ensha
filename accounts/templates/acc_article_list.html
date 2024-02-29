@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>فهرست کیری</h1>
+        <h1>فهرست مقاله‌ها</h1>
         {% for article in articles %}
         <div class="article">
             <h2><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h2>

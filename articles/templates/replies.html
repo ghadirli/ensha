@@ -2,7 +2,7 @@
 <div class="reply">
     <p>{{ reply.content }}</p>
     <p class="meta">
-        By {{ reply.author.username }} | {{ reply.created_at|date:"F d, Y" }} to {{ reply.parent.author.username}}
+        {{ reply.author.username }} | {{ reply.created_at|date:"F d, Y" }} to {{ reply.parent.author.username}}
     </p>
     <!-- Recursive rendering of replies -->
     {% include 'replies.html' with replies=reply.replies.all %}
