@@ -5,7 +5,7 @@ from .models import Article
 from .forms import ArticleForm
 from jalali_date import datetime2jalali, date2jalali
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Article
+from .models import Article, Comment
 from django.http import JsonResponse
 
 
@@ -71,3 +71,14 @@ def article_detail(request, article_id):
         'article': article,
         'comments': comments,
     })
+
+@login_required
+def create_comment(request, article_id):
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        if content:
+            article = get_object_or_404(Article, pk=article_id)
+            comment = Comment.objects.create(author=request.user, article=article, content=content)
+            return redirect('article_detail', article_id=article_id)
+    return redirect('article_detail', article_id=article_id)  # Redirect back to article detail page if comment creation fails
+

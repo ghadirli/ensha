@@ -41,6 +41,8 @@
                         });
                     });
                 });
+
+
             </script>
             <p class="author">By {{ article.author.username }}</p>
             <p class="date">
@@ -61,6 +63,8 @@
             <button type="submit" class="btn btn-danger">حذف</button>
         </form>
     {% endif %}
+
+
     <div class="comments">
         <!-- Display comments and replies -->
         {% for comment in comments %}
@@ -81,6 +85,15 @@
             {% empty %}
                 <p>No comments yet.</p>
         {% endfor %}
+    </div>
+
+    <div class="comment-toolbar">
+        <!-- Add comment form goes here -->
+        <form method="post" action="{% url 'create_comment' article.id %}">
+            {% csrf_token %}
+            <textarea name="content" placeholder="نظر خود را اینجا بنویسید..."></textarea>
+            <button type="submit">ارسال</button>
+        </form>
     </div>
 </body>
 </html>
